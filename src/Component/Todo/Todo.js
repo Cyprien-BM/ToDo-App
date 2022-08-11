@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Todo.css';
 import checkMark from '../../Assets/check-mark.png';
 
 export default function Todo(props) {
   const [status, setStatus] = useState(props.state);
 
-  const changeStatus = () => {
+  const changeStatus = (event) => {
+    event.stopPropagation();
     const newStatus = status === 'finished' ? 'unfinished' : 'finished';
     setStatus(newStatus);
     props.changeTodoState(props.id, newStatus);
@@ -13,8 +15,9 @@ export default function Todo(props) {
   };
 
   return (
-    <div className='todo-container'>
-      {props.title}
+    <article className='todo-container'>
+      <Link to={`/${props.id}/${props.title}`} className='todo-link'>{props.title}
+      </Link>
       <label
         className={
           'todo-checkbox-label' + (status === 'finished' ? ' finished' : '')
@@ -22,7 +25,7 @@ export default function Todo(props) {
       >
         <input
           type='checkbox'
-          onChange={changeStatus}
+          onChange={(event) => changeStatus(event)}
           checked={status === 'finished' ? true : false}
           className='todo-checkbox'
         />
@@ -34,6 +37,6 @@ export default function Todo(props) {
           />
         </div>
       </label>
-    </div>
+    </article>
   );
 }

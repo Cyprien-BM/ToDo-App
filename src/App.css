@@ -10,3 +10,8 @@
 html {
   font-size: 100%;
 }
+
+main {
+  margin-top: 50px;
+  padding: 0 5%;
+}

@@ -8,6 +8,7 @@ export default function ToDoList() {
 
   // Get all todo on first rendering from mocked server
   useEffect(() => {
+    console.log('aze');
     if (todoList.length === 0) {
       fetch('http://localhost:8080/todos/')
         .then((response) => response.json())
