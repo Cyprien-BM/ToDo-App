@@ -1,7 +1,11 @@
-import React from 'react'
+import React from 'react';
+import Header from '../../Layouts/Header/Header';
 
 export default function ToDoList() {
   return (
-    <div>ToDoList</div>
+    <>
+    <Header />
+    <main>ToDoList</main>
+    </>
   )
 }

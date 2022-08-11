@@ -1,0 +1,17 @@
+.header {
+  background-color: #02C39A;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.header h1 {
+  text-shadow: 2px 2px 2px #508991;
+}
+
+.header-btn {
+  background-color: #F0F3BD;
+  padding: 5px 10px;
+  border-radius: 10px;
+}

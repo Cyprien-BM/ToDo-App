@@ -1,0 +1,11 @@
+.btn {
+  border: none;
+  font-weight: bold;
+  transition: background-color ease-in-out 150ms, box-shadow ease-in-out 150ms
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-color: #f0f5ce;
+  box-shadow: 2px 2px 5px rgba(32, 32, 32, 0.8);
+}
