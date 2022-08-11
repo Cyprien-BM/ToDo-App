@@ -1,10 +1,8 @@
 .todo-container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   width: 100%;
   height: 50px;
-  padding: 10px;
   margin: 20px 0;
   border: 2px solid #bfe6dd;
   border-radius: 20px;
@@ -13,18 +11,23 @@
 
 .todo-checkbox-label {
   position: absolute;
-  width: 100%;
+  width: calc(100%);
   height: 50px;
   right: 0;
-  padding-right: 10px;
+  padding: 0 10px;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
   border-radius: 20px;
   transition: box-shadow ease-in-out 200ms;
 }
 
 .todo-checkbox-label:hover {
   cursor: pointer;
-  box-shadow: 0 0 10px rgba(144,144,144, 0.5);
+  box-shadow: 0 0 10px rgba(144, 144, 144, 0.5);
+}
+
+.finished {
+  text-decoration: line-through;
+  opacity: .5;
 }
