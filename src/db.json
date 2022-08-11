@@ -1,0 +1,22 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "title": "Faire les courses",
+      "description": "Prendre du pain, des tomates et de l'eau",
+      "createdAt": "2022-08-10T18:24:00"
+    },
+    {
+      "id": 2,
+      "title": "Aller au sport",
+      "description": "",
+      "createdAt": "2022-08-11T09:00:00"
+    },
+    {
+      "id": 3,
+      "title": "Dejeuner avec Bernard",
+      "description": "48 rue des Roses ",
+      "createdAt": "2022-08-11T13:28:00"
+    }
+  ]
+}
