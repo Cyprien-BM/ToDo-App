@@ -29,25 +29,24 @@ export default React.memo(function Todo(props) {
 
   return (
     <article className='todo-container'>
-      <Link to={`/${props.id}/${props.title}`} className='todo-link'>
+      <Link
+        to={`/${props.id}/${props.title}`}
+        className={'todo-link' + (status === 'finished' ? ' finished' : '')}
+      >
         {props.title}
       </Link>
-      <label
-        className={
-          'todo-checkbox-label' + (status === 'finished' ? ' finished' : '')
-        }
-      >
+      <label className={'todo-checkbox-label'}>
         <input
           type='checkbox'
           onChange={changeStatus}
           checked={status === 'finished' ? true : false}
           className='todo-checkbox'
         />
-        <div className='custom-checkbox'>
+        <div className={'custom-checkbox' + (status === 'finished' ? ' finished' : '')}>
           <img
             src={checkMark}
             alt='custom check-mark'
-            className='custom-checkmark'
+            className={'custom-checkmark' + (status === 'finished' ? ' finished' : '')}
           />
         </div>
       </label>

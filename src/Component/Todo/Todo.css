@@ -71,10 +71,10 @@
   left: 3px;
 }
 
-.finished .custom-checkbox {
+.finished.custom-checkbox {
   background-color: #02c39a;
 }
 
-.finished .custom-checkmark {
+.finished.custom-checkmark {
   opacity: 1;
 }

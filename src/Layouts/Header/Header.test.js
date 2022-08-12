@@ -7,7 +7,7 @@ describe('Header', () => {
   test('Redirect to "/" when button is clicked', () => {
     render(
       <Router>
-        <Header />
+        <Header />a
       </Router>
     );
 

@@ -1,8 +1,7 @@
 .btn {
   border: none;
   font-weight: bold;
-
-  background-color: #F0F3BD;
+  background-color: #f0f3bd;
   padding: 5px 10px;
   border-radius: 10px;
   transition: background-color ease-in-out 150ms, box-shadow ease-in-out 150ms;
