@@ -22,6 +22,9 @@ export default function ToDoPage() {
   }, []);
 
   const deleteTodo = () => {
+    if (!window.confirm('Voulez-vous supprimer cette todo ?')) {
+      return
+    }
     fetch(`http://localhost:8080/todos/${id}`, {
       method: 'DELETE',
     }).then((response) => {
