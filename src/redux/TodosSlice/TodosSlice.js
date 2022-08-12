@@ -16,9 +16,14 @@ export const todosSlice = createSlice({
       });
       state.data = sortTodos(state.data);
     },
+    createNewTodoSlice: (state, action) => {
+      console.log('ici');
+      state.data.unshift(action.payload);
+    },
   },
 });
 
-export const { getAllTodos, updateTodoState } = todosSlice.actions;
+export const { getAllTodos, updateTodoState, createNewTodoSlice } =
+  todosSlice.actions;
 
 export default todosSlice.reducer;

@@ -2,11 +2,14 @@ import React, { useState, useRef } from 'react';
 import Buttons from '../../Component/Button/Button';
 import './CreateTodo.css';
 import { GetNewId } from '../../Utils/GetNewId';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { createNewTodoSlice } from '../../redux/TodosSlice/TodosSlice';
 
 export default function CreateTodo() {
   const inputTitle = useRef();
   const titleErrorMessage = useRef();
+
+  const dispatch = useDispatch()
 
   const todos = useSelector((state) => state.todos.data);
 
@@ -40,6 +43,7 @@ export default function CreateTodo() {
     const newId = GetNewId(todos);
     const newTodo = { ...todo, id: newId, createdAt: dateNow };
     fetchPutNewTodo(newTodo);
+    dispatch(createNewTodoSlice(newTodo));
   };
 
   //Send todo to back
