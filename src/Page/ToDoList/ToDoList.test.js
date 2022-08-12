@@ -17,16 +17,4 @@ describe('ToDoList', () => {
     const testTodo = await screen.findByText('test todo');
     expect(testTodo).toBeInTheDocument();
   });
-
-  // test('sort', async () => {
-  //   expect(
-  //     orderTodos([
-  //       { state: 'finished', createdAt: '"2022-08-10T18:24:00"' },
-  //       { state: 'unfinished', createdAt: '"2022-08-10T18:14:00"' },
-  //     ])
-  //   ).toEqual([
-  //     { state: 'unfinished', createdAt: '"2022-08-10T18:14:00"' },
-  //     { state: 'finished', createdAt: '"2022-08-10T18:24:00"' },
-  //   ]);
-  // });
 });

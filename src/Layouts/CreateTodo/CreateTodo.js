@@ -1,10 +1,14 @@
 import React, { useState, useRef } from 'react';
 import Buttons from '../../Component/Button/Button';
 import './CreateTodo.css';
+import { GetNewId } from '../../Utils/GetNewId';
+import { useSelector } from 'react-redux';
 
 export default function CreateTodo() {
   const inputTitle = useRef();
   const titleErrorMessage = useRef();
+
+  const todos = useSelector((state) => state.todos.data);
 
   const [todo, setTodo] = useState({
     id: 0,
@@ -26,17 +30,42 @@ export default function CreateTodo() {
     }
   };
 
+  // Update todo state with new id and date
   const createNewTodo = (event) => {
     event.preventDefault();
-    console.log('ici');
-    if (!todo.title) {
-      console.log(inputTitle);
-      inputTitle.current.className = 'error'
-      titleErrorMessage.current.innerText = 'Titre obligatoire'
+    if (!inputVerification()) {
+      return;
     }
+    const dateNow = new Date().toISOString();
+    const newId = GetNewId(todos);
+    const newTodo = { ...todo, id: newId, createdAt: dateNow };
+    fetchPutNewTodo(newTodo);
   };
 
-  console.log(todo);
+  //Send todo to back
+  const fetchPutNewTodo = (newTodo) => {
+    fetch(`http://localhost:8080/todos/`, {
+      method: 'POST',
+      headers: new Headers({ 'content-type': 'application/json' }),
+      body: JSON.stringify(newTodo),
+    })
+      .then(() => console.log('succes'))
+      .catch((error) => console.log(error));
+  };
+
+  // Check if title input is null
+  const inputVerification = () => {
+    if (!todo.title) {
+      inputTitle.current.className = 'error';
+      titleErrorMessage.current.innerText = 'Titre obligatoire';
+      titleErrorMessage.current.className = 'title-error-message';
+      return false;
+    }
+    inputTitle.current.className = '';
+    titleErrorMessage.current.innerText = '';
+    titleErrorMessage.current.className = 'hidden';
+    return true;
+  };
 
   return (
     <section className='create-todo'>
@@ -46,7 +75,7 @@ export default function CreateTodo() {
         onSubmit={(event) => createNewTodo(event)}
       >
         <div className='create-todo-input-container'>
-            <label htmlFor='todo-input-title'>Titre *</label>
+          <label htmlFor='todo-input-title'>Titre *</label>
           <input
             ref={inputTitle}
             type='text'
@@ -54,7 +83,7 @@ export default function CreateTodo() {
             onInput={(event) => handleInput(event)}
             value={todo.title}
           />
-          <p className='title-error-message' ref={titleErrorMessage}></p>
+          <p className='hidden' ref={titleErrorMessage}></p>
         </div>
         <div className='create-todo-input-container'>
           <label htmlFor='todo-input-description'>Description</label>
