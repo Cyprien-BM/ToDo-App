@@ -17,13 +17,19 @@ export const todosSlice = createSlice({
       state.data = sortTodos(state.data);
     },
     createNewTodoSlice: (state, action) => {
-      console.log('ici');
       state.data.unshift(action.payload);
+    },
+    deleteTodoSlice: (state, action) => {
+      state.data = state.data.filter((todo) => todo.id !== +action.payload);
     },
   },
 });
 
-export const { getAllTodos, updateTodoState, createNewTodoSlice } =
-  todosSlice.actions;
+export const {
+  getAllTodos,
+  updateTodoState,
+  createNewTodoSlice,
+  deleteTodoSlice,
+} = todosSlice.actions;
 
 export default todosSlice.reducer;

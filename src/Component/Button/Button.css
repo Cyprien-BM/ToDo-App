@@ -1,7 +1,11 @@
 .btn {
   border: none;
   font-weight: bold;
-  transition: background-color ease-in-out 150ms, box-shadow ease-in-out 150ms
+
+  background-color: #F0F3BD;
+  padding: 5px 10px;
+  border-radius: 10px;
+  transition: background-color ease-in-out 150ms, box-shadow ease-in-out 150ms;
 }
 
 .btn:hover {

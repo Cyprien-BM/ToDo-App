@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import Header from '../../Layouts/Header/Header';
 import { useParams } from 'react-router-dom';
-import './ToDoPage.css'
+import './ToDoPage.css';
+import Buttons from '../../Component/Button/Button';
+import { useDispatch } from 'react-redux';
+import { deleteTodoSlice } from '../../redux/TodosSlice/TodosSlice';
+import { useNavigate } from 'react-router-dom';
 
 export default function ToDoPage() {
   const { id } = useParams();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [todo, setTodo] = useState({});
 
@@ -14,6 +20,17 @@ export default function ToDoPage() {
       .then((response) => response.json())
       .then((data) => setTodo(data));
   }, []);
+
+  const deleteTodo = () => {
+    fetch(`http://localhost:8080/todos/${id}`, {
+      method: 'DELETE',
+    }).then((response) => {
+      if (response.status === 200) {
+        dispatch(deleteTodoSlice(id));
+        navigate('/');
+      }
+    });
+  };
 
   return (
     <>
@@ -30,6 +47,11 @@ export default function ToDoPage() {
             <p>{todo.state === 'finished' ? 'Terminé' : 'A faire'}</p>
           </div>
         </div>
+        <Buttons
+          className='delete-button'
+          txt='Supprimer'
+          handleClick={deleteTodo}
+        />
       </main>
     </>
   );
