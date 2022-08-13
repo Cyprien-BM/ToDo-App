@@ -8,7 +8,9 @@ L'application permet de créer des todo contenant un titre et une éventuelle de
 
 L'application est disponible en live à cette adresse : https://cyprien-bm.github.io/ToDo-App-Live/
 
-## Cloner le repository
+## Récuperer le repository
+
+* Cloner le repository
 
 ```bash
 git clone https://github.com/Cyprien-BM/ToDo-App.git
@@ -19,6 +21,10 @@ git clone https://github.com/Cyprien-BM/ToDo-App.git
 npm install
 ```
 
+* Vous pouvez maintenant lancer l'application grâce a la commande
+```bash
+npm start
+```
 
 
 
