@@ -16,7 +16,7 @@ export default function ToDoPage() {
 
   // Get the right todo with id from URL
   useEffect(() => {
-    fetch(`http://localhost:8080/todos/${id}`)
+    fetch(`${process.env.REACT_APP_LOCAL_URL}/${id}`)
       .then((response) => response.json())
       .then((data) => setTodo(data));
   }, []);
@@ -25,7 +25,7 @@ export default function ToDoPage() {
     if (!window.confirm('Voulez-vous supprimer cette todo ?')) {
       return
     }
-    fetch(`http://localhost:8080/todos/${id}`, {
+    fetch(`${process.env.REACT_APP_LOCAL_URL}/${id}`, {
       method: 'DELETE',
     }).then((response) => {
       if (response.status === 200) {

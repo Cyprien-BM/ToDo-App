@@ -48,7 +48,7 @@ export default function CreateTodo() {
 
   //Send todo to back
   const fetchPutNewTodo = (newTodo) => {
-    fetch(`http://localhost:8080/todos/`, {
+    fetch(`${process.env.REACT_APP_LOCAL_URL}`, {
       method: 'POST',
       headers: new Headers({ 'content-type': 'application/json' }),
       body: JSON.stringify(newTodo),

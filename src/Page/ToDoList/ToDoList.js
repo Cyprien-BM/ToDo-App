@@ -14,7 +14,7 @@ export default function ToDoList() {
   // Get all todo on first rendering from mocked server
   useEffect(() => {
     if (todos.length === 0) {
-      fetch('http://localhost:8080/todos/')
+      fetch(`${process.env.REACT_APP_LOCAL_URL}`)
         .then((response) => response.json())
         .then((data) => {
           dispatch(getAllTodos(data));
