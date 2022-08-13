@@ -1,8 +1,28 @@
-# Getting Started with Create React App
+# ToDo-App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Présentation
 
-## Available Scripts
+Réalisation d'une application Todo avec React, Redux et une API REST CRUD via mockAPI.io
+
+L'application permet de créer des todo contenant un titre et une éventuelle description. Les différentes todos s'affichent sur la page d'accueil de la plus récente à la plus ancienne. Les todos peuvent être marquées comme terminées, elles apparaîtront tout en bas de la liste. Enfin chaque todo peut être consulté sur leurs propres pages où l'on peut retrouver leurs descriptions et un bouton pour les supprimer.
+
+L'application est disponible en live à cette adresse : https://cyprien-bm.github.io/ToDo-App-Live/
+
+## Cloner le repository
+
+```bash
+git clone https://github.com/Cyprien-BM/ToDo-App.git
+```
+
+* Depuis le dossier source, installez les modules :
+```bash
+npm install
+```
+
+
+
+
+## REACT CRA
 
 In the project directory, you can run:
 
