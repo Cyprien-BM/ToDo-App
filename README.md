@@ -28,7 +28,7 @@ npm start
 
 
 
-## REACT CRA
+## REACT Create React App
 
 In the project directory, you can run:
 
