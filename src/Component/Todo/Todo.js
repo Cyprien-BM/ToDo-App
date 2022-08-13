@@ -25,8 +25,6 @@ export default React.memo(function Todo(props) {
     }).then(() => dispatch(updateTodoState(todo)));
   };
 
-  console.log(props);
-
   return (
     <article className='todo-container'>
       <Link
