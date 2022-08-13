@@ -20,7 +20,7 @@ export default React.memo(function Todo(props) {
 
   // Change todo state beetween finished and unfinished in mocked server, then dispatch in Slice
   const changeTodoState = (id, newState) => {
-    fetch(`http://localhost:8080/todos/${id}`, {
+    fetch(`${process.env.REACT_APP_LOCAL_URL}/${id}`, {
       method: 'PATCH',
       headers: new Headers({ 'content-type': 'application/json' }),
       body: JSON.stringify({ state: newState }),
