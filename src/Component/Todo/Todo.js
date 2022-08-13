@@ -42,11 +42,17 @@ export default React.memo(function Todo(props) {
           checked={status === 'finished' ? true : false}
           className='todo-checkbox'
         />
-        <div className={'custom-checkbox' + (status === 'finished' ? ' finished' : '')}>
+        <div
+          className={
+            'custom-checkbox' + (status === 'finished' ? ' finished' : '')
+          }
+        >
           <img
             src={checkMark}
             alt='custom check-mark'
-            className={'custom-checkmark' + (status === 'finished' ? ' finished' : '')}
+            className={
+              'custom-checkmark' + (status === 'finished' ? ' finished' : '')
+            }
           />
         </div>
       </label>

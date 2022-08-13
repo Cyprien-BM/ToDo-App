@@ -9,7 +9,7 @@ export default function CreateTodo() {
   const inputTitle = useRef();
   const titleErrorMessage = useRef();
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const todos = useSelector((state) => state.todos.data);
 
@@ -33,7 +33,7 @@ export default function CreateTodo() {
     }
   };
 
-  // Update todo state with new id and date
+  // Update todo state with new id and date and create the new todo
   const createNewTodo = (event) => {
     event.preventDefault();
     if (!inputVerification()) {
@@ -43,7 +43,6 @@ export default function CreateTodo() {
     const newId = GetNewId(todos);
     const newTodo = { ...todo, id: newId, createdAt: dateNow };
     fetchPutNewTodo(newTodo);
-    dispatch(createNewTodoSlice(newTodo));
   };
 
   //Send todo to back
@@ -52,9 +51,11 @@ export default function CreateTodo() {
       method: 'POST',
       headers: new Headers({ 'content-type': 'application/json' }),
       body: JSON.stringify(newTodo),
-    })
-      .then(() => console.log('succes'))
-      .catch((error) => console.log(error));
+    }).then((response) => {
+      if (response.status === 201) {
+        dispatch(createNewTodoSlice(newTodo));
+      }
+    });
   };
 
   // Check if title input is null

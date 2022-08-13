@@ -6,10 +6,10 @@ import ToDoPage from './Page/ToDoPage/ToDoPage';
 function App() {
   return (
     <Routes>
-      <Route path='/' element={<ToDoList />}/>
-      <Route path='/:id/:title' element={<ToDoPage />}/> 
+      <Route path='/' element={<ToDoList />} />
+      <Route path='/:id/:title' element={<ToDoPage />} />
     </Routes>
-);
+  );
 }
 
 export default App;

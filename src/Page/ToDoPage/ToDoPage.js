@@ -17,13 +17,17 @@ export default function ToDoPage() {
   // Get the right todo with id from URL
   useEffect(() => {
     fetch(`${process.env.REACT_APP_LOCAL_URL}/${id}`)
-      .then((response) => response.json())
+      .then((response) => {
+        if (response.status === 200) {
+          return response.json();
+        }
+      })
       .then((data) => setTodo(data));
-  }, []);
+  }, [id]);
 
   const deleteTodo = () => {
     if (!window.confirm('Voulez-vous supprimer cette todo ?')) {
-      return
+      return;
     }
     fetch(`${process.env.REACT_APP_LOCAL_URL}/${id}`, {
       method: 'DELETE',

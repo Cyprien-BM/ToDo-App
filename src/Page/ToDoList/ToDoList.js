@@ -15,12 +15,16 @@ export default function ToDoList() {
   useEffect(() => {
     if (todos.length === 0) {
       fetch(`${process.env.REACT_APP_LOCAL_URL}`)
-        .then((response) => response.json())
+        .then((response) => {
+          if (response.status === 200) {
+            return response.json();
+          }
+        })
         .then((data) => {
           dispatch(getAllTodos(data));
         });
     }
-  }, []);
+  }, [todos.length, dispatch]);
 
   return (
     <>
@@ -30,7 +34,7 @@ export default function ToDoList() {
 
         <div className='todolist-page-container'>
           <CreateTodo />
-          <section className='todolist-display'>
+          <div className='todolist-display'>
             {/* Show all todo */}
             {todos.map((todo) => {
               return (
@@ -42,7 +46,7 @@ export default function ToDoList() {
                 />
               );
             })}
-          </section>
+          </div>
         </div>
       </main>
     </>
