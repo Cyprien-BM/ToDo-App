@@ -5,7 +5,7 @@ import ToDoPage from './Page/ToDoPage/ToDoPage';
 
 function App() {
   return (
-    <Routes>
+    <Routes basename={process.env.PUBLIC_URL}>
       <Route path='/' element={<ToDoList />} />
       <Route path='/:id/:title' element={<ToDoPage />} />
     </Routes>
