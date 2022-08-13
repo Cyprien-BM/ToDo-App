@@ -4,7 +4,7 @@
 
 Réalisation d'une application Todo avec React, Redux et une API REST CRUD via mockAPI.io
 
-L'application permet de créer des todo contenant un titre et une éventuelle description. Les différentes todos s'affichent sur la page d'accueil de la plus récente à la plus ancienne. Les todos peuvent être marquées comme terminées, elles apparaîtront tout en bas de la liste. Enfin chaque todo peut être consulté sur leurs propres pages où l'on peut retrouver leurs descriptions et un bouton pour les supprimer.
+L'application permet de créer des todo contenant un titre et une éventuelle description. Les différentes todos s'affichent sur la page d'accueil de la plus récente à la plus ancienne. Les todos peuvent être marquées comme terminées, elles apparaîtront tout en bas de la liste. Enfin chaque todo peut être consulté sur sa propre page où l'on peut retrouver sa description et un bouton pour la supprimer.
 
 L'application est disponible en live à cette adresse : https://cyprien-bm.github.io/ToDo-App-Live/
 
