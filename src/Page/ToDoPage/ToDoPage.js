@@ -33,6 +33,7 @@ export default function ToDoPage() {
       method: 'DELETE',
     }).then((response) => {
       if (response.status === 200) {
+        console.log('ici');
         dispatch(deleteTodoSlice(id));
         navigate('/');
       }

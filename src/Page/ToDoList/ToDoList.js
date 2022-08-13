@@ -37,14 +37,7 @@ export default function ToDoList() {
           <div className='todolist-display'>
             {/* Show all todo */}
             {todos.map((todo) => {
-              return (
-                <Todo
-                  title={todo.title}
-                  key={todo.id}
-                  state={todo.state}
-                  id={todo.id}
-                />
-              );
+              return <Todo {...todo} key={todo.id} />;
             })}
           </div>
         </div>

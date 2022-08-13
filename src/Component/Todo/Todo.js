@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux/es/exports';
 import { Link } from 'react-router-dom';
 import './Todo.css';
@@ -8,30 +8,32 @@ import { updateTodoState } from '../../redux/TodosSlice/TodosSlice';
 export default React.memo(function Todo(props) {
   const dispatch = useDispatch();
 
-  const [status, setStatus] = useState(props.state);
-
-  // Change state status on checked
+  // Change state on checked
   const changeStatus = (event) => {
     event.stopPropagation();
-    const newStatus = status === 'finished' ? 'unfinished' : 'finished';
-    setStatus(newStatus);
-    changeTodoState(props.id, newStatus);
+    const newStatus = props.state === 'finished' ? 'unfinished' : 'finished';
+    const newTodo = { ...props, state: newStatus };
+    changeTodoState(props.id, newTodo);
   };
 
   // Change todo state beetween finished and unfinished in mocked server, then dispatch in Slice
-  const changeTodoState = (id, newState) => {
+  const changeTodoState = (id, todo) => {
     fetch(`${process.env.REACT_APP_LOCAL_URL}/${id}`, {
-      method: 'PATCH',
+      method: 'PUT',
       headers: new Headers({ 'content-type': 'application/json' }),
-      body: JSON.stringify({ state: newState }),
-    }).then(() => dispatch(updateTodoState({ id, newState })));
+      body: JSON.stringify(todo),
+    }).then(() => dispatch(updateTodoState(todo)));
   };
+
+  console.log(props);
 
   return (
     <article className='todo-container'>
       <Link
         to={`/${props.id}/${props.title}`}
-        className={'todo-link' + (status === 'finished' ? ' finished' : '')}
+        className={
+          'todo-link' + (props.state === 'finished' ? ' finished' : '')
+        }
       >
         {props.title}
       </Link>
@@ -39,19 +41,20 @@ export default React.memo(function Todo(props) {
         <input
           type='checkbox'
           onChange={changeStatus}
-          checked={status === 'finished' ? true : false}
+          checked={props.state === 'finished' ? true : false}
           className='todo-checkbox'
         />
         <div
           className={
-            'custom-checkbox' + (status === 'finished' ? ' finished' : '')
+            'custom-checkbox' + (props.state === 'finished' ? ' finished' : '')
           }
         >
           <img
             src={checkMark}
             alt='custom check-mark'
             className={
-              'custom-checkmark' + (status === 'finished' ? ' finished' : '')
+              'custom-checkmark' +
+              (props.state === 'finished' ? ' finished' : '')
             }
           />
         </div>

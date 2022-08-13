@@ -12,7 +12,7 @@ export const todosSlice = createSlice({
     },
     updateTodoState: (state, action) => {
       state.data.forEach((todo) => {
-        if (todo.id === action.payload.id) todo.state = action.payload.newState;
+        if (todo.id === action.payload.id) todo.state = action.payload.state;
       });
       state.data = sortTodos(state.data);
     },
