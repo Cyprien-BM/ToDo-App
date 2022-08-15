@@ -13,13 +13,15 @@ export default function CreateTodo() {
 
   const todos = useSelector((state) => state.todos.data);
 
-  const [todo, setTodo] = useState({
+  const initialToDoState = {
     id: 0,
     title: '',
     description: '',
     state: 'unfinished',
     createdAt: '',
-  });
+  };
+
+  const [todo, setTodo] = useState(initialToDoState);
 
   //Data binding
   const handleInput = (event) => {
@@ -54,9 +56,15 @@ export default function CreateTodo() {
     }).then((response) => {
       if (response.status === 201) {
         dispatch(createNewTodoSlice(newTodo));
+        cleanTodoState()
       }
     });
   };
+
+  //Reset todo state
+  const cleanTodoState = () => {
+    setTodo(initialToDoState)
+  }
 
   // Check if title input is null
   const inputVerification = () => {
